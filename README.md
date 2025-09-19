@@ -1,36 +1,55 @@
-# Akbank-Derin-Ogrenme-Projesi
+Akbank Derin Öğrenme Bootcamp: Yeni Nesil Proje Kampı
+Bu proje, Akbank Derin Öğrenme Bootcamp kapsamında, CNN (Convolutional Neural Network) mimarisi kullanarak çok sınıflı bir görüntü sınıflandırma problemi çözmek için geliştirilmiştir. Projenin temel amacı, farklı coğrafi ve mimari yapıları doğru bir şekilde sınıflandıran bir model oluşturmaktır.
 
-# Akbank Derin Öğrenme Bootcamp: Yeni Nesil Proje Kampı
+Projenin Amacı
+Projenin temel amacı, derin öğrenme tekniklerini kullanarak Intel Image Classification veri setindeki doğa ve yapay ortamlara ait görüntüleri (binalar, orman, buzul, dağ, deniz, sokak) yüksek doğrulukla sınıflandıran bir model geliştirmektir.
 
-Bu proje, Akbank Derin Öğrenme Bootcamp kapsamında, Convolutional Neural Network (CNN) mimarisi kullanarak çok sınıflı bir görüntü sınıflandırma problemi çözmek için geliştirilmiştir. Proje, Intel Image Classification veri setini kullanarak farklı coğrafi ve mimari yapıları sınıflandırmayı amaçlamaktadır.
+Veri Seti Hakkında Bilgi
+Veri Seti: Intel Image Classification
 
-## Projenin Amacı
+Türü: Çok Sınıflı Görüntü Sınıflandırması (Multiclass Image Classification)
 
-Projenin temel amacı, derin öğrenme tekniklerini kullanarak farklı doğa ve yapay ortam kategorilerine ait görüntüleri (binalar, orman, buzul, dağ, deniz, sokak) doğru bir şekilde sınıflandıran bir model geliştirmektir.
+Sınıflar: Buildings, Forest, Glacier, Mountain, Sea, Street (6 sınıf)
 
-## Veri Seti Hakkında Bilgi
+Boyut: Yaklaşık 25.000 eğitim görüntüsü, 3.000 test görüntüsü
 
-* **Veri Seti:** Intel Image Classification
-* **Türü:** Multiclass Image Classification
-* **Sınıflar:** Buildings, Forest, Glacier, Mountain, Sea, Street (6 sınıf)
-* **Boyut:** Toplam ~25.000 eğitim görüntüsü, 14.000 test görüntüsü
-* **Veri Seti Linki:** [https://www.kaggle.com/datasets/puneet6060/intel-image-classification](https://www.kaggle.com/datasets/puneet6060/intel-image-classification)
+Veri Seti Linki: https://www.kaggle.com/datasets/puneet6060/intel-image-classification
 
-## Kullanılan Yöntemler
+Kullanılan Yöntemler
+Veri Ön İşleme: Görüntülerin yeniden boyutlandırılması (150x150 piksel) ve piksellerin 0-1 aralığına normalize edilmesi işlemleri yapılmıştır.
 
-* **Veri Ön İşleme:** Görüntülerin yeniden boyutlandırılması, etiketlenmesi ve normalizasyonu işlemleri yapılmıştır.
-* **Veri Çoğaltma (Data Augmentation):** Modelin genelleme yeteneğini artırmak amacıyla, ImageDataGenerator kullanılarak görüntü rotasyonu, çevirme (flip), yakınlaştırma (zoom) ve parlaklık ayarları gibi dönüşümler uygulanmıştır.
-* **Model Mimarisi:** Temel CNN katmanları (Convolutional, Pooling, Dropout, Dense) içeren bir model oluşturulmuştur.
-* **Hiperparametre Optimizasyonu:** Model performansını artırmak için çeşitli hiperparametreler (katman sayısı, filtre boyutu, öğrenme oranı, vb.) üzerinde denemeler yapılmıştır.
-* **Model Değerlendirmesi:** Modelin performansı, doğruluk (accuracy) ve kayıp (loss) grafikleri, karmaşıklık matrisi (confusion matrix) ve sınıflandırma raporu (classification report) ile değerlendirilmiştir.
-* **Model Yorumlama:** Grad-CAM yöntemi kullanılarak modelin karar verirken görüntülerin hangi bölgelerine odaklandığı görselleştirilmiştir.
+Veri Çoğaltma (Data Augmentation): Modelin genelleme yeteneğini artırmak ve aşırı uydurma (overfitting) sorununu engellemek amacıyla, ImageDataGenerator kullanılarak görüntü rotasyonu, yatay çevirme ve yakınlaştırma gibi dönüşümler uygulanmıştır.
 
-## Elde Edilen Sonuçlar
+Model Mimarisi: Temel CNN katmanları (Convolutional, Pooling, Dropout, Dense) içeren ardışık bir model (Sequential) oluşturulmuştur. Model, ReLU aktivasyon fonksiyonu ve Softmax çıkış katmanını kullanmaktadır.
 
-(Bu bölümü projenin sonunda, modelin eğitimini tamamladığımızda elde ettiğimiz sonuçlara göre dolduracağız.)
+Hiperparametre Optimizasyonu: Modelin performansı, katman sayısı, filtre boyutları, Dropout oranı ve öğrenme oranı gibi parametreler üzerinde yapılan denemelerle optimize edilmiştir.
 
-## Kaggle Notebook
+Model Değerlendirmesi: Modelin performansı, doğruluk ve kayıp grafikleri, karmaşıklık matrisi (confusion matrix) ve sınıflandırma raporu (classification report) ile kapsamlı bir şekilde değerlendirilmiştir.
 
-Projenin tüm detaylı kodlarına ve açıklamalarına aşağıdaki Kaggle Notebook linkinden ulaşabilirsiniz:
+Elde Edilen Sonuçlar
+Eğitimden sonra, modelin test verileri üzerindeki performansı oldukça başarılı bulunmuştur.
 
-[Kaggle Notebook Linki Buraya Gelecek]
+Genel Doğruluk Skoru: %84
+
+Eğitim Grafikleri: Doğruluk ve Kayıp grafikleri, modelin eğitim ve doğrulama setleri üzerinde aşırı uydurma yapmadığını göstermiştir.
+
+Sınıflandırma Raporu: Her sınıf için elde edilen detaylı metrikler aşağıdadır:
+
+              precision    recall  f1-score   support
+
+   buildings       0.76      0.88      0.82       437
+      forest       0.94      0.98      0.96       474
+     glacier       0.82      0.72      0.77       553
+    mountain       0.83      0.73      0.78       525
+         sea       0.79      0.88      0.84       510
+      street       0.88      0.85      0.87       501
+    accuracy                           0.84      3000
+   macro avg       0.84      0.84      0.84      3000
+weighted avg       0.84      0.84      0.84      3000
+
+Elde edilen sonuçlar, modelin özellikle Forest (orman) sınıfında %96'lık F1-skoru ile mükemmel bir performans sergilediğini göstermektedir. Diğer tüm sınıflarda da güvenilir tahminler yapılmıştır.
+
+Proje Linki
+Projenin tüm kodlarına, detaylı anlatımlarına ve canlı demosuna aşağıdaki Kaggle Notebook linkinden ulaşabilirsiniz:
+
+[https://www.kaggle.com/code/merturulbayram/notebookcdd3c38460]
