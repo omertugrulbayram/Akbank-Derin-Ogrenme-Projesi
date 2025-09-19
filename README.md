@@ -35,17 +35,8 @@ Eğitim Grafikleri: Doğruluk ve Kayıp grafikleri, modelin eğitim ve doğrulam
 
 Sınıflandırma Raporu: Her sınıf için elde edilen detaylı metrikler aşağıdadır:
 
-              precision    recall  f1-score   support
+<img width="544" height="352" alt="image" src="https://github.com/user-attachments/assets/42065e98-fd83-43d9-9e70-7ad82f88e616" />
 
-   buildings       0.76      0.88      0.82       437
-      forest       0.94      0.98      0.96       474
-     glacier       0.82      0.72      0.77       553
-    mountain       0.83      0.73      0.78       525
-         sea       0.79      0.88      0.84       510
-      street       0.88      0.85      0.87       501
-    accuracy                           0.84      3000
-   macro avg       0.84      0.84      0.84      3000
-weighted avg       0.84      0.84      0.84      3000
 
 Elde edilen sonuçlar, modelin özellikle Forest (orman) sınıfında %96'lık F1-skoru ile mükemmel bir performans sergilediğini göstermektedir. Diğer tüm sınıflarda da güvenilir tahminler yapılmıştır.
 
